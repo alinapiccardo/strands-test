@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
-import { fetchBreeds, fetchImagesCount } from "../features/dogs/dogSlice";
+import { fetchBreeds, fetchImagesCount } from "../store/actions";
 import PieChartComponent from "../app/components/PieChart";
 
 export default function Home() {
@@ -18,11 +18,12 @@ export default function Home() {
   }, [dispatch]);
 
   return (
-    <div>
-      <h1>Dog Breeds Image Count</h1>
-      {loading && <p>Loading...</p>}
-      {error && <p>Error: {error}</p>}
-      {Object.keys(imagesCount).length > 0 && <PieChartComponent data={imagesCount} />}
-    </div>
+    <div className="flex flex-col h-screen text-center">
+    <h1 className="text-2xl font-bold py-10">Top 10 Dog Breeds With Most Images</h1>
+    {loading && <p className="text-gray-500">Loading...</p>}
+    {error && <p className="text-red-500">Error: {error}</p>}
+    {Object.keys(imagesCount).length > 0 && <PieChartComponent data={imagesCount} />}
+  </div>
+  
   );
 }
