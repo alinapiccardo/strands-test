@@ -49,6 +49,7 @@ This will start the development server and open the app in your default web brow
 
 ## Project Structure
 The project structure is as follows:
+```sh
 strands-test/
 ├── strands-app/
 │   ├── public/
@@ -73,6 +74,7 @@ strands-test/
 │   └── ...
 ├── [README.md](http://_vscodecontentref_/1)
 └── ...
+```
 
 ## Components
 The app consists of the following components:
