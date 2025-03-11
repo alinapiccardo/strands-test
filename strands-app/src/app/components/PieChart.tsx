@@ -6,7 +6,7 @@ interface PieChartProps {
   data: { [key: string]: number };
 }
 
-const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#AF19FF", "#FF4560", "#775DD0", "#F3A500", "#E90052", "#60B3F7"];
+const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#f74412", "#ff2b4b", "#d05dbf", "#cd5be2", "#5c017d", "#1d2e9a"];
 
 const PieChartComponent: React.FC<PieChartProps> = ({ data }) => {
   console.log("data", data);
@@ -23,16 +23,16 @@ const PieChartComponent: React.FC<PieChartProps> = ({ data }) => {
   console.log("sortedData", sortedData);
 
   return (
-    <div className="w-full mx-auto overflow-hidden">
+    <div className="w-2/3 mx-auto overflow-hidden">
       <ResponsiveContainer width="100%" height={600}>
         <PieChart>
-          <Pie data={sortedData} cx="50%" cy="50%" outerRadius="80%" dataKey="value" label={({ percentage }) => `${percentage}`}>
+          <Pie data={sortedData} cx="50%" cy="50%" outerRadius="80%" dataKey="value" label={({ percentage, name }) => `${name}: ${percentage} `} labelLine={false}>
             {sortedData.map((entry) => (
               <Cell key={entry.name} fill={entry.color} />
             ))}
           </Pie>
-          <Tooltip formatter={(value, name, props) => [`${value} (${props.payload.percentage})`, name]} />
-          <Legend />
+          <Tooltip formatter={(value, name, props) => [`${props.payload.percentage}`, name]} />
+          <Legend layout="vertical" verticalAlign="middle" align="right" />
         </PieChart>
       </ResponsiveContainer>
     </div>

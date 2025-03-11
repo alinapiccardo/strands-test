@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { fetchBreeds, fetchImagesCount } from "../store/actions";
 import PieChartComponent from "../app/components/PieChart";
+import NavBar from "../app/components/NavBar";
 
 export default function Home() {
   const dispatch = useAppDispatch();
@@ -18,7 +19,8 @@ export default function Home() {
   }, [dispatch]);
 
   return (
-    <div className="flex flex-col h-screen text-center">
+    <div className="flex flex-col h-screen text-center bg-gray-50">
+    <NavBar />
     <h1 className="text-2xl font-bold py-10">Top 10 Dog Breeds With Most Images</h1>
     {loading && <p className="text-gray-500">Loading...</p>}
     {error && <p className="text-red-500">Error: {error}</p>}
